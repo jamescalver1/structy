@@ -5,10 +5,10 @@ The function should return a list containing all values of the nodes in the link
 
 # My Solution
 
-# class Node:
-#   def __init__(self, val):
-#     self.val = val
-#     self.next = None
+class Node:
+  def __init__(self, val):
+    self.val = val
+    self.next = None
 
 def linked_list_values(head):
   output = []
@@ -56,3 +56,43 @@ def _linked_list_values(head, values):
     return
   values.append(head.val)
   _linked_list_values(head.next, values)
+
+# Test Cases
+
+# Test 0
+
+a = Node("a")
+b = Node("b")
+c = Node("c")
+d = Node("d")
+
+a.next = b
+b.next = c
+c.next = d
+
+# a -> b -> c -> d
+
+linked_list_values(a) # -> [ 'a', 'b', 'c', 'd' ]
+
+# Test 1
+
+x = Node("x")
+y = Node("y")
+
+x.next = y
+
+# x -> y
+
+linked_list_values(x) # -> [ 'x', 'y' ]
+
+# Test 2
+
+q = Node("q")
+
+# q
+
+linked_list_values(q) # -> [ 'q' ]
+
+# Test 3
+
+linked_list_values(None) # -> [ ]

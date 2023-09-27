@@ -10,10 +10,10 @@ You may assume that both input lists are non-empty.
 
 # My Solution
 
-# class Node:
-#   def __init__(self, val):
-#     self.val = val
-#     self.next = None
+class Node:
+  def __init__(self, val):
+    self.val = val
+    self.next = None
 
 def zipper_lists(head_1, head_2):
   count = 0
@@ -93,3 +93,98 @@ m = length of list 2
 Time: O(min(n, m))
 Space: O(min(n, m))
 '''
+
+# Test Cases
+
+# Test 0
+
+a = Node("a")
+b = Node("b")
+c = Node("c")
+a.next = b
+b.next = c
+# a -> b -> c
+
+x = Node("x")
+y = Node("y")
+z = Node("z")
+x.next = y
+y.next = z
+# x -> y -> z
+
+zipper_lists(a, x)
+# a -> x -> b -> y -> c -> z
+
+# Test 1
+
+a = Node("a")
+b = Node("b")
+c = Node("c")
+d = Node("d")
+e = Node("e")
+f = Node("f")
+a.next = b
+b.next = c
+c.next = d
+d.next = e
+e.next = f
+# a -> b -> c -> d -> e -> f
+
+x = Node("x")
+y = Node("y")
+z = Node("z")
+x.next = y
+y.next = z
+# x -> y -> z
+
+zipper_lists(a, x)
+# a -> x -> b -> y -> c -> z -> d -> e -> f
+
+# Test 2
+
+s = Node("s")
+t = Node("t")
+s.next = t
+# s -> t
+
+one = Node(1)
+two = Node(2)
+three = Node(3)
+four = Node(4)
+one.next = two
+two.next = three
+three.next = four
+# 1 -> 2 -> 3 -> 4
+
+zipper_lists(s, one)
+# s -> 1 -> t -> 2 -> 3 -> 4
+
+# Test 3
+
+w = Node("w")
+# w
+
+one = Node(1)
+two = Node(2)
+three = Node(3)
+one.next = two
+two.next = three
+# 1 -> 2 -> 3 
+
+zipper_lists(w, one)
+# w -> 1 -> 2 -> 3
+
+# Test 4
+
+one = Node(1)
+two = Node(2)
+three = Node(3)
+one.next = two
+two.next = three
+# 1 -> 2 -> 3 
+
+w = Node("w")
+# w
+
+zipper_lists(one, w)
+# 1 -> w -> 2 -> 3
